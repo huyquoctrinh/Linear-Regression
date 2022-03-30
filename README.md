@@ -12,7 +12,7 @@ y_name : name for Y column \
 csv_file : csv input file data \
 inputfile : input file for test \
 outfile :write output file \
-graphfile : create graph file \
+graphfile : create graph file 
 
 # Demo
 Run: 
