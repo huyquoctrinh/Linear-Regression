@@ -2,9 +2,9 @@
 Update on 31/03/2022
 # Packages
 Install the following packages for using our model
-''' 
+``` 
 pip install -r requirements.txt
-'''
+```
 # Config
 Update in utils.py file including:
 X_name : name for X column \
@@ -16,6 +16,6 @@ graphfile : create graph file \
 
 # Demo
 Run: 
-'''
+```
 python3 main.py
-'''
+```
