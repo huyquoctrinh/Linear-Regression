@@ -1,5 +1,5 @@
 # Linear-Regression
-Update on 31/03/2022
+Update on 31/03/2022, this version is for single variable
 # Packages
 Install the following packages for using our model
 ``` 
