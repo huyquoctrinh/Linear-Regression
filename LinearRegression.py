@@ -1,14 +1,19 @@
 from utils import *
+
+def gradient(X,w,y):
+  n = X.shape[0]
+  return 1/n*np.dot(X.T,np.dot(X.T,w)-y)
+
+
 class LinearRegression:
   def __init__(self,graphfile):
-    self.w0 = 0
-    self.w1 = 0
+    self. w = []
     self.y0 = 0
     self.X =[]
     self.y = []
     self.x0 = np.linspace(0,800,2)
     self.graph_file = graphfile
-  def proof(self,X,y):
+  def fit(self,X,y):
     self.X = X
     self.y = y
     one = np.ones((X.shape[0],1))
@@ -16,33 +21,43 @@ class LinearRegression:
     a = np.dot(Xbar.T,Xbar)
     b = np.dot(Xbar.T,y)
     w = np.dot(np.linalg.pinv(a),b)
-    self.w0 = w[0][0]
-    self.w1 = w[1][0]
-    print("w0 update to", self.w0)
-    print("w1 update to",self.w1)
-    self.y0 = self.w0 + self.w1*self.x0
-    # print(y0,"=",w0,"+",w1,"*",x0)
+    self.w = w 
+    print("Weight of the model",self.w)
     print("Finish update weight")
   def get_weight(self):
-    print("w1:", self.w1)
-    print("w0:",self.w0)
-    return (self.w1,self.w0)
+    print("weight of the model",self.w)
+    return (self.w)
   def plot_graph(self):
+    if (len(self.w)>2):
+      print("Does not support at the momment, try later")
+      return False
     if self.X == [] or self.y == []:
       print("fail to plot, please add data")
       return False
     else:
-      plt.plot(self.X.T, self.y.T, 'ro') 
+      # plt.plot(self.X.T, self.y.T, 'ro') 
+      plt.scatter(self.X, self.y, edgecolor='k', facecolor='grey', alpha=0.7, label='Sample data')
       plt.plot(self.x0, self.y0)             
       plt.xlabel('target temperature')
       plt.ylabel('prcp')
       # plt.show()
       plt.savefig(self.graph_file)
+      return True
   def predict(self,x):
-    return np.round(self.w1*x + self.w0,5)
-  def loss(self,y_true):
+    res = 0
+    for i in range(1,len(self.w)):
+      res += self.w[i][0]*x[i-1]
+    res += self.w[0][0]
+    return np.round(res,5)
+  def mse(self,y_predict,y_true):
     res = 0
     m = len(y_true)
     for i in range(len(y_true)):
-      res+= (y_true[i] - self.predict(y))**2
+      res+= (y_true[i] - self.predict(y_predict))**2
+    return float(res/m)
+  def mae(self,y_predict,y_true):
+    res = 0
+    m = len(y_true)
+    for i in range(len(y_true)):
+      res+= y_true[i] - self.predict(y_predict)
     return float(res/m)

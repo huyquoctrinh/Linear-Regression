@@ -6,13 +6,13 @@ X,y = create_data(csv_file,X_name,y_name)
 print(X.shape)
 
 print("Starting update weight ...")
-linear.proof(X,y)
+linear.fit(X,y)
 
 print("Weight after update:")
 linear.get_weight()
 
 print("Graph for the linear:")
-linear.plot_graph()
+# linear.plot_graph()
 
 sample = readfile(inputfile)
 print(sample)
