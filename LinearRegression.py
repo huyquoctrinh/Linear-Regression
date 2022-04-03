@@ -4,6 +4,18 @@ def gradient(X,w,y):
   n = X.shape[0]
   return 1/n*np.dot(X.T,np.dot(X.T,w)-y)
 
+def cost(X,w,y):
+  n = X.shape[0]
+  return 0.5/n*np.linalg.norm(y - np.dot(X,w),2)**2
+
+def Gradient_descent(X,y,w_init,lr,iter):
+  w = [w_init]
+  for it in range(iter):
+    w_new = w[-1] - lr*gradient(X,w[-1],y)
+    if (np.linalg.norm(gradient(X,w_new,y))/len(w_new) < 1e-3):
+      break
+    w.append(w_new)
+  return (w,it)
 
 class LinearRegression:
   def __init__(self,graphfile):
@@ -43,21 +55,26 @@ class LinearRegression:
       # plt.show()
       plt.savefig(self.graph_file)
       return True
-  def predict(self,x):
+  def predict_one_value(self,x):
     res = 0
     for i in range(1,len(self.w)):
       res += self.w[i][0]*x[i-1]
     res += self.w[0][0]
     return np.round(res,5)
+  def predict(self,X):
+    res = []
+    for x in X:
+      res.append(self.predict_one_value(x))
+    return res
   def mse(self,y_predict,y_true):
     res = 0
     m = len(y_true)
     for i in range(len(y_true)):
-      res+= (y_true[i] - self.predict(y_predict))**2
+      res+= (y_true[i] - y_predict[i])**2
     return float(res/m)
   def mae(self,y_predict,y_true):
     res = 0
     m = len(y_true)
     for i in range(len(y_true)):
-      res+= y_true[i] - self.predict(y_predict)
+      res+= abs(y_true[i] - y_predict[i])
     return float(res/m)
