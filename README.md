@@ -1,5 +1,5 @@
 # Linear-Regression
-Update on 02/04/2022, this version is for multivariable with GD and MSE, MAE evalutation, plot on 3D distribution with line and
+Update on 02/04/2022, this version is for multivariable with GD and MSE, MAE evalutation, plot on 3D distribution with line of best fit and
 better accuracy
 # Packages
 Install the following packages for using our model
@@ -22,7 +22,7 @@ Three dimension visualization for distribution of data \
 Line graph for the model visualize on 2D \
 ![alt text](https://github.com/huyquoctrinh/Linear-Regression/blob/updateFull/asset/graph_out%20.png)
 
-Result when compare performance of model on true y data with predicted data, compare on a graph of distribution statistic
+Result when compare performance of model on true data with predicted data, compare on a graph of distribution 
 ![alt text](https://github.com/huyquoctrinh/Linear-Regression/blob/updateFull/asset/compare.png)
 
 # Demo
