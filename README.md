@@ -16,13 +16,13 @@ outfile :write output file \
 graphfile : create graph file 
 
 # Result 
-Three dimension visualization for distribution of data \
+Three dimension visualization for distribution of data. \
 ![alt text](https://github.com/huyquoctrinh/Linear-Regression/blob/updateFull/asset/distribution_3d.png)
 
-Line graph for the model visualize on 2D \
+Line graph for the model visualize on 2D. \
 ![alt text](https://github.com/huyquoctrinh/Linear-Regression/blob/updateFull/asset/graph_out%20.png)
 
-Result when compare performance of model on true data with predicted data, compare on a graph of distribution 
+Result when compare performance of model on true data with predicted data, compare on a graph of distribution. 
 ![alt text](https://github.com/huyquoctrinh/Linear-Regression/blob/updateFull/asset/compare.png)
 
 # Demo
